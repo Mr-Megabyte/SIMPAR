@@ -1,0 +1,27 @@
+class Passageiro:
+    def __init__(self, bag_pass, ciclo_in):
+        self.bag_pass = bag_pass
+        self.ciclo_in = ciclo_in
+#    def __str__(self):
+#        devolve uma string com formatação dos atributos, conforme o
+#  		      exemplo de um passageiro com 4 bagagens no ciclo da simulação 2: [b:4 t:2]
+# def obtem_bag_pass(self):
+#        devolve o valor de bag_pass
+# def obtem_ciclo_in(self):
+#        devolve o valor de ciclo_in
+class Balcao:
+    def __init__(self,n_balcao,fila,inic_atend,passt_atend,numt_bag,tempt_esp,bag_utemp):
+        self.n_balcao = n_balcao
+        self.fila = fila
+        self.inic_atend = inic_atend
+        self.passt_atend = passt_atend
+        self.numt_bag = numt_bag
+        self.tempt_esp = tempt_esp
+        self.bag_utemp = bag_utemp
+#    def __str__(self):
+#    def muda_inic_atend():
+#    def incr_passt_atend():
+#    def muda_numt_bag():
+#    def muda_tempt_esp():
+        
+        
