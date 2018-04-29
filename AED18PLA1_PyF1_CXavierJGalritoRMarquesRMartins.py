@@ -17,7 +17,7 @@ class Balcao:
         self.passt_atend = passt_atend
         self.numt_bag = numt_bag
         self.tempt_esp = tempt_esp
-#        self.bag_utemp = bag_utemp
+        self.bag_utemp = bag_utemp
 #    def __str__(self):
 #    def muda_inic_atend():
 #    def incr_passt_atend():
