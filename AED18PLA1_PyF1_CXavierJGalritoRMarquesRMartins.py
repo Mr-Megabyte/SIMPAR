@@ -1,3 +1,6 @@
+#(1) COMANDOS PARA O SISTEMA:
+# -*- coding: utf-8 -*-
+#(2) COMENTARIO GERAL
 """
 Created on Mon Apr 30 01:41:13 2018
 
@@ -7,8 +10,11 @@ __author__= 'Inácio Galrito-30000016@students.ual.pt''\n''Ricardo Marques-30000
 __version__='V 1.0'
 """
 """
+#(3) IMPORTAÇÃO DE MÓDULOS:
 import SIMPAR
 help(SIMPAR)
+#(4) DECLARAÇÃO DE VARIÁVEIS:
+#(5) DECLARAÇÃO DE CLASSES:
 class Passageiro:
     def __init__(self, bag_pass, ciclo_in):
         self.bag_pass = bag_pass
@@ -36,5 +42,6 @@ class Balcao:
 #    def muda_tempt_esp():
     def obtem_fila(self):
         return self.fila
-            
         
+#(6) DECLARAÇÃO DE FUNÇÕES:
+#(7) CORPO PRINCIPAL DO PROGRAMA:
