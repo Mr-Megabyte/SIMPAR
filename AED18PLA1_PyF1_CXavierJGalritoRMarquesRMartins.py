@@ -1,3 +1,6 @@
+from pythonds.basic import Queue
+
+
 class Passageiro:
     def __init__(self, bag_pass, ciclo_in):
         self.bag_pass = bag_pass
@@ -12,7 +15,7 @@ class Passageiro:
 class Balcao:
     def __init__(self,n_balcao,fila,inic_atend,passt_atend,numt_bag,tempt_esp,bag_utemp):
         self.n_balcao = n_balcao
-        self.fila = fila
+        self.fila = Queue()
         self.inic_atend = inic_atend
         self.passt_atend = passt_atend
         self.numt_bag = numt_bag
