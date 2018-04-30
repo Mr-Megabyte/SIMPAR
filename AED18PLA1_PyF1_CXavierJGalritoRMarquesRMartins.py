@@ -23,5 +23,7 @@ class Balcao:
 #    def incr_passt_atend():
 #    def muda_numt_bag():
 #    def muda_tempt_esp():
-        
+    def obtem_fila(self):
+        return self.fila
+            
         
