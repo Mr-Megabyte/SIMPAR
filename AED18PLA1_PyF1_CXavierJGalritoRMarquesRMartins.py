@@ -1,3 +1,15 @@
+"""
+Created on Mon Apr 30 01:41:13 2018
+
+SIMPAR – Simulação de Passageiros em Partida Aérea
+"""
+__author__= 'Inácio Galrito-30000016@students.ual.pt''\n''Ricardo Marques-30000386@students.ual.pt ''\n''Cátia Xavier-30000115@students.ual.pt''\n''Rute Martins-30000411@students.ual.pt '
+__version__='V 1.0'
+"""
+"""
+import SIMPAR
+print(SIMPAR.__doc__)
+help(SIMPAR)
 class Passageiro:
     def __init__(self, bag_pass, ciclo_in):
         self.bag_pass = bag_pass
