@@ -8,7 +8,6 @@ __version__='V 1.0'
 """
 """
 import SIMPAR
-print(SIMPAR.__doc__)
 help(SIMPAR)
 class Passageiro:
     def __init__(self, bag_pass, ciclo_in):
