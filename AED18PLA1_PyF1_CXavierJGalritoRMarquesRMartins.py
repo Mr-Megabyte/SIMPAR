@@ -11,8 +11,8 @@ __version__='V 1.0'
 """
 """
 #(3) IMPORTAÇÃO DE MÓDULOS:
-import SIMPAR
-help(SIMPAR)
+import AED18PLA1_PyF1_CXavierJGalritoRMarquesRMartins
+help(AED18PLA1_PyF1_CXavierJGalritoRMarquesRMartins)
 #(4) DECLARAÇÃO DE VARIÁVEIS:
 #(5) DECLARAÇÃO DE CLASSES:
 class Passageiro:
