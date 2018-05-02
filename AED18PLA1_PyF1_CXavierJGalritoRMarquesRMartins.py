@@ -15,6 +15,10 @@ import AED18PLA1_PyF1_CXavierJGalritoRMarquesRMartins
 help(AED18PLA1_PyF1_CXavierJGalritoRMarquesRMartins)
 from pythonds.basic import Queue
 #(4) DECLARAÇÃO DE VARIÁVEIS:
+num_pass = 70
+num_bag = 4
+num_balcoes = 4
+ciclos = 10
 #(5) DECLARAÇÃO DE CLASSES:
 class Passageiro:
     def __init__(self, bag_pass, ciclo_in):
