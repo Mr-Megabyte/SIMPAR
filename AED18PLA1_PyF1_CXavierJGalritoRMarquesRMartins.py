@@ -42,6 +42,18 @@ class Balcao:
 #    def muda_tempt_esp():
     def obtem_fila(self):
         return self.fila
+    def obtem_balcao(self):
+        return self.n_balcao
+    def obtem_inic_atend(self):
+        return self.inic_atend
+    def obtem_passst_atend(self):
+        return self.passt_atend
+    def obtem_numt_bag(self):
+        return self.numt_bag
+    def obtem_tempt_esp(self):
+        return self.tempt_esp
+    def obtem_bag_utem(self):
+        return self.bag_utemp
         
 #(6) DECLARAÇÃO DE FUNÇÕES:
 #(7) CORPO PRINCIPAL DO PROGRAMA:
