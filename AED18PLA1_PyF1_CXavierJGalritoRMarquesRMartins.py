@@ -1,3 +1,4 @@
+=======
 #(1) COMANDOS PARA O SISTEMA:
 # -*- coding: utf-8 -*-
 #(2) COMENTARIO GERAL
@@ -13,6 +14,7 @@ __version__='V 1.0'
 #(3) IMPORTAÇÃO DE MÓDULOS:
 import AED18PLA1_PyF1_CXavierJGalritoRMarquesRMartins
 help(AED18PLA1_PyF1_CXavierJGalritoRMarquesRMartins)
+from pythonds.basic import Queue
 #(4) DECLARAÇÃO DE VARIÁVEIS:
 #(5) DECLARAÇÃO DE CLASSES:
 class Passageiro:
@@ -29,7 +31,7 @@ class Passageiro:
 class Balcao:
     def __init__(self,n_balcao,fila,inic_atend,passt_atend,numt_bag,tempt_esp,bag_utemp):
         self.n_balcao = n_balcao
-        self.fila = fila
+        self.fila = Queue()
         self.inic_atend = inic_atend
         self.passt_atend = passt_atend
         self.numt_bag = numt_bag
