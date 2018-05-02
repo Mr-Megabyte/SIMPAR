@@ -1,4 +1,3 @@
-=======
 #(1) COMANDOS PARA O SISTEMA:
 # -*- coding: utf-8 -*-
 #(2) COMENTARIO GERAL
