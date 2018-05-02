@@ -1,6 +1,22 @@
+=======
+#(1) COMANDOS PARA O SISTEMA:
+# -*- coding: utf-8 -*-
+#(2) COMENTARIO GERAL
+"""
+Created on Mon Apr 30 01:41:13 2018
+
+SIMPAR – Simulação de Passageiros em Partida Aérea
+"""
+__author__= 'Inácio Galrito-30000016@students.ual.pt''\n''Ricardo Marques-30000386@students.ual.pt ''\n''Cátia Xavier-30000115@students.ual.pt''\n''Rute Martins-30000411@students.ual.pt '
+__version__='V 1.0'
+"""
+"""
+#(3) IMPORTAÇÃO DE MÓDULOS:
+import AED18PLA1_PyF1_CXavierJGalritoRMarquesRMartins
+help(AED18PLA1_PyF1_CXavierJGalritoRMarquesRMartins)
 from pythonds.basic import Queue
-
-
+#(4) DECLARAÇÃO DE VARIÁVEIS:
+#(5) DECLARAÇÃO DE CLASSES:
 class Passageiro:
     def __init__(self, bag_pass, ciclo_in):
         self.bag_pass = bag_pass
@@ -26,5 +42,20 @@ class Balcao:
 #    def incr_passt_atend():
 #    def muda_numt_bag():
 #    def muda_tempt_esp():
+    def obtem_fila(self):
+        return self.fila
+    def obtem_balcao(self):
+        return self.n_balcao
+    def obtem_inic_atend(self):
+        return self.inic_atend
+    def obtem_passst_atend(self):
+        return self.passt_atend
+    def obtem_numt_bag(self):
+        return self.numt_bag
+    def obtem_tempt_esp(self):
+        return self.tempt_esp
+    def obtem_bag_utem(self):
+        return self.bag_utemp
         
-        
+#(6) DECLARAÇÃO DE FUNÇÕES:
+#(7) CORPO PRINCIPAL DO PROGRAMA:
