@@ -50,6 +50,7 @@ class Balcao:
     "\n" + "numt_bag: " + str(self.numt_bag) + \
     "\n" + "tempt_esp: " + str(self.tempt_esp) + \
     "\n" + "bag_utemp: " + str(self.bag_utemp)
+
     def muda_inic_atend():
         pass
     def incr_passt_atend():
