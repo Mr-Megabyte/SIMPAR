@@ -11,8 +11,8 @@ __version__='V 1.0'
 """
 """
 #(3) IMPORTAÇÃO DE MÓDULOS:
-import AED18PLA1_PyF1_CXavierJGalritoRMarquesRMartins
-help(AED18PLA1_PyF1_CXavierJGalritoRMarquesRMartins)
+#import AED18PLA1_PyF1_CXavierJGalritoRMarquesRMartins
+#help(AED18PLA1_PyF1_CXavierJGalritoRMarquesRMartins)
 from pythonds.basic import Queue
 #(4) DECLARAÇÃO DE VARIÁVEIS:
 num_pass = 70
@@ -36,14 +36,21 @@ class Passageiro:
 class Balcao:
     def __init__(self,n_balcao,fila,inic_atend,passt_atend,numt_bag,tempt_esp,bag_utemp):
         self.n_balcao = n_balcao
-        self.fila = Queue()
+        self.fila = fila
         self.inic_atend = inic_atend
         self.passt_atend = passt_atend
         self.numt_bag = numt_bag
         self.tempt_esp = tempt_esp
         self.bag_utemp = bag_utemp
     def __str__(self):
-        pass
+        return "Balcão Nº: " + str(self.n_balcao) + \
+    "\n" + "inic_atend: " + str(self.inic_atend) + \
+    "\n" + "fila: " + str(self.fila) + \
+    "\n" + "passt_atend: " + str(self.passt_atend) + \
+    "\n" + "numt_bag: " + str(self.numt_bag) + \
+    "\n" + "tempt_esp: " + str(self.tempt_esp) + \
+    "\n" + "bag_utemp: " + str(self.bag_utemp)
+
     def muda_inic_atend():
         pass
     def incr_passt_atend():
@@ -68,4 +75,20 @@ class Balcao:
         return self.bag_utemp
         
 #(6) DECLARAÇÃO DE FUNÇÕES:
+def cria_balcoes():
+    balcoes = []
+    while len(balcoes) < num_balcoes:
+#        print (len(balcoes)+1)
+        balcoes.append(Balcao(len(balcoes)+1, 0, 0, 0, 0, 0, 0))
+#    só para verificar que foram criados - para apagar depois
+    for b in range(len(balcoes)):
+        print (balcoes[b])
+def simpar_simula():
+    cria_balcoes()
+    
+
+            
 #(7) CORPO PRINCIPAL DO PROGRAMA:
+if __name__ == '__main__':
+    simpar_simula()
+    
