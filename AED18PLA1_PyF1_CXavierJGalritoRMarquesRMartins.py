@@ -2,8 +2,6 @@
 # -*- coding: utf-8 -*-
 #(2) COMENTARIO GERAL
 """
-Created on Mon Apr 30 01:41:13 2018
-
 SIMPAR – Simulação de Passageiros em Partida Aérea
 """
 __author__= 'Inácio Galrito-30000016@students.ual.pt''\n''Ricardo Marques-30000386@students.ual.pt ''\n''Cátia Xavier-30000115@students.ual.pt''\n''Rute Martins-30000411@students.ual.pt '
@@ -14,6 +12,7 @@ __version__='V 1.0'
 #import AED18PLA1_PyF1_CXavierJGalritoRMarquesRMartins
 #help(AED18PLA1_PyF1_CXavierJGalritoRMarquesRMartins)
 from pythonds.basic import Queue
+import random
 #(4) DECLARAÇÃO DE VARIÁVEIS:
 num_pass = 70
 num_bag = 4
@@ -36,16 +35,16 @@ class Passageiro:
 class Balcao:
     def __init__(self,n_balcao,fila,inic_atend,passt_atend,numt_bag,tempt_esp,bag_utemp):
         self.n_balcao = n_balcao
-        self.fila = fila
+        self.fila = Queue()
         self.inic_atend = inic_atend
         self.passt_atend = passt_atend
         self.numt_bag = numt_bag
         self.tempt_esp = tempt_esp
         self.bag_utemp = bag_utemp
     def __str__(self):
+#        apresenta em lista os atributos e respetivos valores do balcão
         return "Balcão Nº: " + str(self.n_balcao) + \
     "\n" + "inic_atend: " + str(self.inic_atend) + \
-    "\n" + "fila: " + str(self.fila) + \
     "\n" + "passt_atend: " + str(self.passt_atend) + \
     "\n" + "numt_bag: " + str(self.numt_bag) + \
     "\n" + "tempt_esp: " + str(self.tempt_esp) + \
@@ -76,13 +75,15 @@ class Balcao:
         
 #(6) DECLARAÇÃO DE FUNÇÕES:
 def cria_balcoes():
+#    crimos a lista dos balcões 
     balcoes = []
+#    começamos a encher a lista gerando objetos da classe balcoes até atingir num_balcoes
     while len(balcoes) < num_balcoes:
-#        print (len(balcoes)+1)
         balcoes.append(Balcao(len(balcoes)+1, 0, 0, 0, 0, 0, 0))
-#    só para verificar que foram criados - para apagar depois
+#   PARA APAGAR - só para verificar que foram criados os balcoes - PARA APAGAR
     for b in range(len(balcoes)):
         print (balcoes[b])
+#   PARA APAGAR - só para verificar que foram criados os balcoes - PARA APAGAR
 def simpar_simula():
     cria_balcoes()
     
@@ -91,4 +92,5 @@ def simpar_simula():
 #(7) CORPO PRINCIPAL DO PROGRAMA:
 if __name__ == '__main__':
     simpar_simula()
+    
     
