@@ -13,11 +13,13 @@ __version__='V 1.0'
 #help(AED18PLA1_PyF1_CXavierJGalritoRMarquesRMartins)
 from pythonds.basic import Queue
 import random
+import copy
 #(4) DECLARAÇÃO DE VARIÁVEIS:
 num_pass = 70
 num_bag = 4
 num_balcoes = 4
 ciclos = 10
+ciclo_atual = 0
 balcoes = []
 #(5) DECLARAÇÃO DE CLASSES:
 class Passageiro:
@@ -25,7 +27,7 @@ class Passageiro:
         self.bag_pass = bag_pass
         self.ciclo_in = ciclo_in
     def __str__(self):
-        return ("[b:{} t:{}]" .format(num_bag, ciclo_in))
+        return ("[b:{} t:{}]" .format(self.bag_pass, self.ciclo_in))
 #        devolve uma string com formatação dos atributos, conforme o
 #  		      exemplo de um passageiro com 4 bagagens no ciclo da simulação 2: [b:4 t:2]    
     def obtem_bag_pass(self):
@@ -97,6 +99,11 @@ def escolhe_filaMaisCurta():
 # o que tem a fila mais curta 
     return(ordemCrescente.pop()[0])
 
+# função que gera novos passageiros - bag_pass aleatório entre 1 e num_pass. ciclo_in é cópia profunda de ciclo_atual
+#    (se assim não fosse, cada vez que incrementasse ciclo_atual, ciclo_in de todos os passageiros alterava)
+def gera_passageiro():
+    return Passageiro(random.randint(1,num_bag), copy.deepcopy(ciclo_atual))
+#função principal
 def simpar_simula():
     cria_balcoes()
     
@@ -120,6 +127,7 @@ if __name__ == '__main__':
         print(balcoes[b])
         
     print(escolhe_filaMaisCurta())
+    print(gera_passageiro())
     
 #   PARA APAGAR - só para verificar que foram criados os balcoes - PARA APAGAR
 #    for b in range(len(balcoes)):
