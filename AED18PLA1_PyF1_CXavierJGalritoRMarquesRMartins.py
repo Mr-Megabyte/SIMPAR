@@ -120,12 +120,12 @@ def chega_passageiro():
 # função para atender passageiros
 def atende_passageiros():
     for b in balcoes:
-        if b.fila.isEmpty == False:
-            p = b.fila.dequeue()
-            p.obtem_bag_pass()
+        if b.fila.isEmpty() == False:
+            print(b.fila.dequeue())
 #função principal
 def simpar_simula():
     cria_balcoes()
+    
     
 
     
@@ -144,11 +144,10 @@ if __name__ == '__main__':
     balcoes[2].fila.enqueue(Passageiro())
     balcoes[2].fila.enqueue(Passageiro())
     balcoes[3].fila.enqueue(Passageiro())
-    for b in range(len(balcoes)):
-        print("\n")
-        print(balcoes[b])
-    print("O balcão com fila mais curta: ", escolhe_filaMaisCurta())
-    print(gera_passageiro())
+#    for b in range(len(balcoes)):
+#        print("\n")
+#        print(balcoes[b])
+#    print("O balcão com fila mais curta: ", escolhe_filaMaisCurta())
 #    print(escolhe_filaMaisCurta())
+    atende_passageiros()
 #    print("A probabilidade de chegar mais um passageiro é " + str(chega_passageiro()) + "%")
-
