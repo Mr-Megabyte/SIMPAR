@@ -18,7 +18,7 @@ import copy
 num_pass = 70
 num_bag = 4
 num_balcoes = 4
-ciclos = 10
+ciclos = 11
 ciclo_atual = 0
 balcoes = []
 #(5) DECLARAÇÃO DE CLASSES:
@@ -98,11 +98,26 @@ def escolhe_filaMaisCurta():
 # por último retorno o valor referente ao número do balcão do primeiro tuplo da lista que, por estar ordenada, será
 # o que tem a fila mais curta 
     return(ordemCrescente.pop()[0])
-
 # função que gera novos passageiros - bag_pass aleatório entre 1 e num_pass. ciclo_in é cópia profunda de ciclo_atual
 #    (se assim não fosse, cada vez que incrementasse ciclo_atual, ciclo_in de todos os passageiros alterava)
 def gera_passageiro():
     return Passageiro(random.randint(1,num_bag), copy.deepcopy(ciclo_atual))
+# função para calcular a probabilidade de aparecer mais um passageiro mediante o ciclo_atual
+def chega_passageiro():
+#    divido ciclos por 3 para achar a terça parte do número total de ciclos
+#    faço esta divisão recorrendo apenas à parte inteira do quociente, despresando o resto (//)
+#    se a terça parte do número total de ciclos for maior ou igual ao ciclo atual, então
+#    a probabilidade de chegar um novo passageiro é 100%
+    if ciclos//3 >= ciclo_atual:
+        return(100)
+#    se duas vezes a terça parte do número total de ciclos for maior ou igual ao ciclo atual, então
+#    a probabilidade de chegar um novo passageiro é 80%
+    elif 2*ciclos//3 >= ciclo_atual and ciclo_atual > ciclos//3:
+        return(80)
+#   todos os outros resultados são para o terceiro terço do número de total de ciclos e a probabilidade é 60%
+    else:
+        return(60)
+
 #função principal
 def simpar_simula():
     cria_balcoes()
@@ -128,8 +143,4 @@ if __name__ == '__main__':
         
     print(escolhe_filaMaisCurta())
     print(gera_passageiro())
-    
-#   PARA APAGAR - só para verificar que foram criados os balcoes - PARA APAGAR
-#    for b in range(len(balcoes)):
-#        print (balcoes[b])
-#   PARA APAGAR - só para verificar que foram criados os balcoes - PARA APAGAR
+    print("A probabilidade de chegar mais um passageiro é " + str(chega_passageiro()) + "%")
