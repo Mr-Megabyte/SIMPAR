@@ -53,7 +53,7 @@ class Balcao:
     "\n" + "passt_atend: " + str(self.passt_atend) + \
     "\n" + "numt_bag: " + str(self.numt_bag) + \
     "\n" + "tempt_esp: " + str(self.tempt_esp) + \
-    "\n" + "bag_utemp: " + str(self.bag_utemp)
+    "\n" + "bag_utemp: " + str(self.bag_utemp) + "\n"
 
     def muda_inic_atend():
         pass
@@ -139,8 +139,11 @@ if __name__ == '__main__':
     balcoes[2].fila.enqueue(1)
     balcoes[3].fila.enqueue(1)
     for b in range(len(balcoes)):
+        print("\n")
         print(balcoes[b])
+        print("O balcão com fila mais curta: ", escolhe_filaMaisCurta())
+        print(gera_passageiro())
         
-    print(escolhe_filaMaisCurta())
-    print(gera_passageiro())
+        
+
     print("A probabilidade de chegar mais um passageiro é " + str(chega_passageiro()) + "%")
