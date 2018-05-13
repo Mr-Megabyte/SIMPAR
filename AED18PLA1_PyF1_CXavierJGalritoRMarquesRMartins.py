@@ -52,8 +52,8 @@ class Balcao:
     "\n" + "passt_atend: " + str(self.passt_atend) + \
     "\n" + "numt_bag: " + str(self.numt_bag) + \
     "\n" + "tempt_esp: " + str(self.tempt_esp) + \
-    "\n" + "bag_utemp: " + str(self.bag_utemp)
-# 
+    "\n" + "bag_utemp: " + str(self.bag_utemp) + "\n"
+
     def muda_inic_atend():
         pass
     def incr_passt_atend():
@@ -100,6 +100,8 @@ def escolhe_filaMaisCurta():
 #    (se assim não fosse, cada vez que incrementasse ciclo_atual, ciclo_in de todos os passageiros alterava)
 def gera_passageiro():
     return Passageiro()
+#    return Passageiro(random.randint(1,num_bag), copy.deepcopy(ciclo_atual))
+
 # função para calcular a probabilidade de aparecer mais um passageiro mediante o ciclo_atual
 def chega_passageiro():
 #    divido ciclos por 3 para achar a terça parte do número total de ciclos
@@ -121,9 +123,6 @@ def atende_passageiros():
         if b.fila.isEmpty == False:
             p = b.fila.dequeue()
             p.obtem_bag_pass()
-        
-            
-            
 #função principal
 def simpar_simula():
     cria_balcoes()
@@ -135,18 +134,21 @@ def simpar_simula():
 #(7) CORPO PRINCIPAL DO PROGRAMA:
 if __name__ == '__main__':
     simpar_simula()
-    balcoes[0].fila.enqueue(Passageiro())
-    balcoes[0].fila.enqueue(Passageiro())
-    balcoes[0].fila.enqueue(Passageiro())
-    balcoes[1].fila.enqueue(Passageiro())
-    balcoes[1].fila.enqueue(Passageiro())
-    balcoes[1].fila.enqueue(Passageiro())
-    balcoes[2].fila.enqueue(Passageiro())
-    balcoes[2].fila.enqueue(Passageiro())
-    balcoes[3].fila.enqueue(Passageiro())
+
+ #   balcoes[0].fila.enqueue(Passageiro())
+ #   balcoes[0].fila.enqueue(Passageiro())
+ #   balcoes[0].fila.enqueue(Passageiro())
+ #   balcoes[1].fila.enqueue(Passageiro())
+ #   balcoes[1].fila.enqueue(Passageiro())
+ #   balcoes[1].fila.enqueue(Passageiro())
+ #   balcoes[2].fila.enqueue(Passageiro())
+ #   balcoes[2].fila.enqueue(Passageiro())
+ #   balcoes[3].fila.enqueue(Passageiro())
     for b in range(len(balcoes)):
+        print("\n")
         print(balcoes[b])
-        
+        print("O balcão com fila mais curta: ", escolhe_filaMaisCurta())
+        print(gera_passageiro())
 #    print(escolhe_filaMaisCurta())
-    print(gera_passageiro())
 #    print("A probabilidade de chegar mais um passageiro é " + str(chega_passageiro()) + "%")
+
