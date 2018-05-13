@@ -18,6 +18,7 @@ num_pass = 70
 num_bag = 4
 num_balcoes = 4
 ciclos = 10
+balcoes = []
 #(5) DECLARAÇÃO DE CLASSES:
 class Passageiro:
     def __init__(self, bag_pass, ciclo_in):
@@ -44,6 +45,7 @@ class Balcao:
     def __str__(self):
 #        apresenta em lista os atributos e respetivos valores do balcão
         return "Balcão Nº: " + str(self.n_balcao) + \
+    "\n" + "Fila de espera: " + str(self.obtem_pass_fila()) + \
     "\n" + "inic_atend: " + str(self.inic_atend) + \
     "\n" + "passt_atend: " + str(self.passt_atend) + \
     "\n" + "numt_bag: " + str(self.numt_bag) + \
@@ -58,8 +60,12 @@ class Balcao:
         pass
     def muda_tempt_esp():
         pass
-    def obtem_fila(self):
-        return self.fila
+#    função para devolver os passageiros da fila
+    def obtem_pass_fila(self):
+        return self.fila.items
+#    função para devolver o tamanho da fila
+    def obtem_tam_fila(self):
+        return self.fila.size
     def obtem_balcao(self):
         return self.n_balcao
     def obtem_inic_atend(self):
@@ -75,22 +81,30 @@ class Balcao:
         
 #(6) DECLARAÇÃO DE FUNÇÕES:
 def cria_balcoes():
-#    crimos a lista dos balcões 
-    balcoes = []
-#    começamos a encher a lista gerando objetos da classe balcoes até atingir num_balcoes
+#    Encher a lista balcoes gerando objetos da classe Balcao até atingir num_balcoes
     while len(balcoes) < num_balcoes:
         balcoes.append(Balcao(len(balcoes)+1, 0, 0, 0, 0, 0, 0))
 #   PARA APAGAR - só para verificar que foram criados os balcoes - PARA APAGAR
     for b in range(len(balcoes)):
         print (balcoes[b])
 #   PARA APAGAR - só para verificar que foram criados os balcoes - PARA APAGAR
+# função para escolher a fila mais pequena
+def escolhe_filaMaisCurta():
+# extraio o size da fila de cada balcão e construo um dicionario (filas) com {balcão(b):tamanho da fila(t)}.
+    for b in balcoes:
+        filas = {b.n_balcao:b.obtem_tam_fila}
+# a seguir uso o sorted para ordenar os .items() por b do mais pequeno para o maior e coloco numa lista de tuplos
+    d_ordenado = sorted((b, t) for (t,b) in filas.items())
+# por último retorno a cave referente ao número do balcão do primeiro valor da lista que, por estar ordenada, será
+# o que tem a fila mais curta   
+    return (d_ordenado.pop(0)[1])
+
 def simpar_simula():
     cria_balcoes()
+    print(escolhe_filaMaisCurta())
     
 
             
 #(7) CORPO PRINCIPAL DO PROGRAMA:
 if __name__ == '__main__':
     simpar_simula()
-    
-    
