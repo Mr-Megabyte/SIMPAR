@@ -31,8 +31,8 @@ class Passageiro:
     def obtem_bag_pass(self):
         pass
 #        devolve o valor de bag_pass
-# def obtem_ciclo_in(self):
-#        devolve o valor de ciclo_in
+    def obtem_ciclo_in(self):
+        return self.ciclo_in
 class Balcao:
     def __init__(self,n_balcao,fila,inic_atend,passt_atend,numt_bag,tempt_esp,bag_utemp):
         self.n_balcao = n_balcao
