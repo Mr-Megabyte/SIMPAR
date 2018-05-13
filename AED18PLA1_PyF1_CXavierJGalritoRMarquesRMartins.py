@@ -31,7 +31,7 @@ class Passageiro:
 #        devolve uma string com formatação dos atributos, conforme o
 #  		      exemplo de um passageiro com 4 bagagens no ciclo da simulação 2: [b:4 t:2]    
     def obtem_bag_pass(self):
-        pass
+        return self.bag_pass
 #        devolve o valor de bag_pass
     def obtem_ciclo_in(self):
         return self.ciclo_in
