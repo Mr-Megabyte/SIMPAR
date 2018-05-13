@@ -43,7 +43,7 @@ class Balcao:
         self.tempt_esp = tempt_esp
         self.bag_utemp = bag_utemp
     def __str__(self):
-#        apresenta em lista os atributos e respetivos valores do balcão
+#        Apresenta em lista os atributos e respetivos valores do balcão
         return "Balcão Nº: " + str(self.n_balcao) + \
     "\n" + "Tamanho da fila de espera: " + str(self.obtem_tam_fila()) + \
     "\n" + "Fila de espera: " + str(self.obtem_pass_fila()) + \
@@ -91,13 +91,11 @@ def escolhe_filaMaisCurta():
     filas = {}
     for b in balcoes:
         filas.update({b.n_balcao:b.fila.size()})
-# a seguir uso o sorted para ordenar os .items() por b do mais pequeno para o maior e coloco numa lista de tuplos
+# a seguir uso o sorted para ordenar os balcoes por size de fila mais pequeno para o maior e coloco numa lista de tuplos
     ordemCrescente = [(balcao, filas[balcao]) for balcao in sorted(filas, key=filas.get, reverse=True)]
-# por último retorno a cave referente ao número do balcão do primeiro valor da lista que, por estar ordenada, será
+# por último retorno o valor referente ao número do balcão do primeiro tuplo da lista que, por estar ordenada, será
 # o que tem a fila mais curta 
     return(ordemCrescente.pop()[0])
-
-#    return (d_ordenado.pop()[0])
 
 def simpar_simula():
     cria_balcoes()
@@ -110,13 +108,13 @@ def simpar_simula():
 if __name__ == '__main__':
     simpar_simula()
     balcoes[0].fila.enqueue(1)
+    balcoes[0].fila.enqueue(1)
+    balcoes[0].fila.enqueue(1)
     balcoes[1].fila.enqueue(1)
     balcoes[1].fila.enqueue(1)
     balcoes[1].fila.enqueue(1)
     balcoes[2].fila.enqueue(1)
     balcoes[2].fila.enqueue(1)
-    balcoes[2].fila.enqueue(1)
-    balcoes[3].fila.enqueue(1)
     balcoes[3].fila.enqueue(1)
     for b in range(len(balcoes)):
         print(balcoes[b])
