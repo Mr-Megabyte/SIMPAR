@@ -28,8 +28,8 @@ class Passageiro:
     def __init__(self):
         self.bag_pass = random.randint(1,num_bag)
         self.ciclo_in = copy.deepcopy(ciclo_atual)
-    def __str__(self):
-        return ("[b:{} t:{}]" .format(self.bag_pass, self.ciclo_in)) 
+    def __repr__(self):
+        return ("[b:{} t:{}]" .format(self.bag_pass, self.ciclo_in))        
     def obtem_bag_pass(self):
         return self.bag_pass
     def obtem_ciclo_in(self):
@@ -135,20 +135,20 @@ def simpar_simula():
 if __name__ == '__main__':
     simpar_simula()
 
- #   balcoes[0].fila.enqueue(Passageiro())
- #   balcoes[0].fila.enqueue(Passageiro())
- #   balcoes[0].fila.enqueue(Passageiro())
- #   balcoes[1].fila.enqueue(Passageiro())
- #   balcoes[1].fila.enqueue(Passageiro())
- #   balcoes[1].fila.enqueue(Passageiro())
- #   balcoes[2].fila.enqueue(Passageiro())
- #   balcoes[2].fila.enqueue(Passageiro())
- #   balcoes[3].fila.enqueue(Passageiro())
+    balcoes[0].fila.enqueue(Passageiro())
+    balcoes[0].fila.enqueue(Passageiro())
+    balcoes[0].fila.enqueue(Passageiro())
+    balcoes[1].fila.enqueue(Passageiro())
+    balcoes[1].fila.enqueue(Passageiro())
+    balcoes[1].fila.enqueue(Passageiro())
+    balcoes[2].fila.enqueue(Passageiro())
+    balcoes[2].fila.enqueue(Passageiro())
+    balcoes[3].fila.enqueue(Passageiro())
     for b in range(len(balcoes)):
         print("\n")
         print(balcoes[b])
-        print("O balcão com fila mais curta: ", escolhe_filaMaisCurta())
-        print(gera_passageiro())
+    print("O balcão com fila mais curta: ", escolhe_filaMaisCurta())
+    print(gera_passageiro())
 #    print(escolhe_filaMaisCurta())
 #    print("A probabilidade de chegar mais um passageiro é " + str(chega_passageiro()) + "%")
 
