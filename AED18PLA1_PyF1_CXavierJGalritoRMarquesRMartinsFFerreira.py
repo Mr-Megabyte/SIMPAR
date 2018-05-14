@@ -4,7 +4,7 @@
 """
 SIMPAR – Simulação de Passageiros em Partida Aérea
 """
-__author__= 'Inácio Galrito-30000016@students.ual.pt''\n''Ricardo Marques-30000386@students.ual.pt ''\n''Cátia Xavier-30000115@students.ual.pt''\n''Rute Martins-30000411@students.ual.pt '
+__author__= 'Cátia Xavier-30000115@students.ual.pt''\n''Inácio Galrito-30000016@students.ual.pt''\n''Ricardo Marques-30000386@students.ual.pt ''\n''Filipe Ferreira-30000379@students.ual.pt''\n''Rute Martins-30000411@students.ual.pt '
 __version__='V 1.0'
 """
 """
@@ -18,7 +18,7 @@ import copy
 num_pass = 70
 num_bag = 4
 num_balcoes = 4
-ciclos = 11
+ciclos = 10
 ciclo_atual = 0
 balcoes = []
 #(5) DECLARAÇÃO DE CLASSES:
@@ -122,6 +122,8 @@ def atende_passageiros():
     for b in balcoes:
         if b.fila.isEmpty() == False:
             print(b.fila.dequeue())
+            chega_passageiro()
+            
 #função principal
 def simpar_simula():
     cria_balcoes()
@@ -133,21 +135,27 @@ def simpar_simula():
             
 #(7) CORPO PRINCIPAL DO PROGRAMA:
 if __name__ == '__main__':
-    simpar_simula()
-
-    balcoes[0].fila.enqueue(Passageiro())
-    balcoes[0].fila.enqueue(Passageiro())
-    balcoes[0].fila.enqueue(Passageiro())
-    balcoes[1].fila.enqueue(Passageiro())
-    balcoes[1].fila.enqueue(Passageiro())
-    balcoes[1].fila.enqueue(Passageiro())
-    balcoes[2].fila.enqueue(Passageiro())
-    balcoes[2].fila.enqueue(Passageiro())
-    balcoes[3].fila.enqueue(Passageiro())
-#    for b in range(len(balcoes)):
-#        print("\n")
-#        print(balcoes[b])
-#    print("O balcão com fila mais curta: ", escolhe_filaMaisCurta())
+    #print(ciclo_atual)
+    #print(ciclos)    
+    while not ciclo_atual == ciclos:
+        print("««« CICLO n.º {} »»»" .format(ciclo_atual + 1))
+        ciclo_atual = ciclo_atual + 1
+        simpar_simula()
+            
+        balcoes[0].fila.enqueue(Passageiro())
+        balcoes[0].fila.enqueue(Passageiro())
+        balcoes[0].fila.enqueue(Passageiro())
+        balcoes[1].fila.enqueue(Passageiro())
+        balcoes[1].fila.enqueue(Passageiro())
+        balcoes[1].fila.enqueue(Passageiro())
+        balcoes[2].fila.enqueue(Passageiro())
+        balcoes[2].fila.enqueue(Passageiro())
+        balcoes[3].fila.enqueue(Passageiro())
+        for b in range(len(balcoes)):
+            print("\n")
+            print(balcoes[b])
+    print("O balcão com fila mais curta: ", escolhe_filaMaisCurta())
 #    print(escolhe_filaMaisCurta())
-    atende_passageiros()
+atende_passageiros()
 #    print("A probabilidade de chegar mais um passageiro é " + str(chega_passageiro()) + "%")
+
