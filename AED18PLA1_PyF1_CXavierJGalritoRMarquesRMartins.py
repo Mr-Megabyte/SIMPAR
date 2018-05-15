@@ -54,14 +54,14 @@ class Balcao:
     "\n" + "tempt_esp: " + str(self.tempt_esp) + \
     "\n" + "bag_utemp: " + str(self.bag_utemp) + "\n"
 
-    def muda_inic_atend():
-        pass
-    def incr_passt_atend():
-        pass
-    def muda_numt_bag():
-        pass
-    def muda_tempt_esp():
-        pass
+    def muda_inic_atend(self):
+        return self.inic_atend
+    def incr_passt_atend(self):
+        return self.passt_atend
+    def muda_numt_bag(self):
+        return self.numt_bag
+    def muda_tempt_esp(self):
+        return self.tempt_esp
 #    função para devolver os passageiros da fila
     def obtem_pass_fila(self):
         return self.fila.items
