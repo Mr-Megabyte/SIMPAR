@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon May 14 22:29:32 2018
+
+@author: José Galrito
+"""
+
 #(1) COMANDOS PARA O SISTEMA:
 # -*- coding: utf-8 -*-
 #(2) COMENTARIO GERAL
@@ -19,7 +26,7 @@ import names
 num_pass = 70
 num_bag = 4
 num_balcoes = 4
-ciclos = 1
+ciclos = 4
 ciclo_atual = 0
 balcoes = []
 #(5) DECLARAÇÃO DE CLASSES:
@@ -82,225 +89,46 @@ class Balcao:
         return self.tempt_esp
     def obtem_bag_utem(self):
         return self.bag_utemp
-class TreeNode:
-    def __init__(self,key,val,left=None,right=None,parent=None):
-        self.key = key
-        self.payload = val
-        self.leftChild = left
-        self.rightChild = right
-        self.parent = parent
-
-    def hasLeftChild(self):
-        return self.leftChild
-
-    def hasRightChild(self):
-        return self.rightChild
-
-    def isLeftChild(self):
-        return self.parent and self.parent.leftChild == self
-
-    def isRightChild(self):
-        return self.parent and self.parent.rightChild == self
-
-    def isRoot(self):
-        return not self.parent
-
-    def isLeaf(self):
-        return not (self.rightChild or self.leftChild)
-
-    def hasAnyChildren(self):
-        return self.rightChild or self.leftChild
-
-    def hasBothChildren(self):
-        return self.rightChild and self.leftChild
-
-    def replaceNodeData(self,key,value,lc,rc):
-        self.key = key
-        self.payload = value
-        self.leftChild = lc
-        self.rightChild = rc
-        if self.hasLeftChild():
-            self.leftChild.parent = self
-        if self.hasRightChild():
-            self.rightChild.parent = self
-
-    def preorder(self):
-        print(self.key)
-        if self.leftChild:
-            self.leftChild.preorder()
-        if self.rightChild:
-            self.rightChild.preorder()
-
-    def postorder(self):
-        if self != None:
-            postorder(self.getLeftChild())
-            postorder(self.getRightChild())
-            print(self.getRootVal())
-        
-    def inorder(self):
-        if self != None:
-            inorder(self.getLeftChild())
-            print(self.getRootVal())
-            inorder(self.getRightChild())
       
-class BinarySearchTree:
+class node: #Declaração da classe Nó para ser usada na BST
+    def __init__(self, value=None): #Inicia o valor dos NÓS como vazios
+        self.value = value
+        self.ladEsq = None #Nós a esq Vazios
+        self.ladDrt = None #Nós a Drt vazios
 
-    def __init__(self):
-        self.root = None
-        self.size = 0
-
-    def length(self):
-        return self.size
-
-    def __len__(self):
-        return self.size
-
-    def put(self,key,val):
-        if self.root:
-            self._put(key,val,self.root)
-        else:
-            self.root = TreeNode(key,val)
-        self.size = self.size + 1
-
-    def _put(self,key,val,currentNode):
-        if key < currentNode.key:
-            if currentNode.hasLeftChild():
-                   self._put(key,val,currentNode.leftChild)
-            else:
-                   currentNode.leftChild = TreeNode(key,val,parent=currentNode)
-        else:
-            if currentNode.hasRightChild():
-                   self._put(key,val,currentNode.rightChild)
-            else:
-                   currentNode.rightChild = TreeNode(key,val,parent=currentNode)
-
-    def __setitem__(self,k,v):
-       self.put(k,v)
-
-    def get(self,key):
-       if self.root:
-           res = self._get(key,self.root)
-           if res:
-                  return res.payload
-           else:
-                  return None
-       else:
-           return None
-
-    def _get(self,key,currentNode):
-       if not currentNode:
-           return None
-       elif currentNode.key == key:
-           return currentNode
-       elif key < currentNode.key:
-           return self._get(key,currentNode.leftChild)
-       else:
-           return self._get(key,currentNode.rightChild)
-
-    def __getitem__(self,key):
-       return self.get(key)
-
-    def __contains__(self,key):
-       if self._get(key,self.root):
-           return True
-       else:
-           return False
-
-    def delete(self,key):
-      if self.size > 1:
-         nodeToRemove = self._get(key,self.root)
-         if nodeToRemove:
-             self.remove(nodeToRemove)
-             self.size = self.size-1
-         else:
-             raise KeyError('Error, key not in tree')
-      elif self.size == 1 and self.root.key == key:
-         self.root = None
-         self.size = self.size - 1
-      else:
-         raise KeyError('Error, key not in tree')
-
-    def __delitem__(self,key):
-       self.delete(key)
-
-    def spliceOut(self):
-       if self.isLeaf():
-           if self.isLeftChild():
-                  self.parent.leftChild = None
-           else:
-                  self.parent.rightChild = None
-       elif self.hasAnyChildren():
-           if self.hasLeftChild():
-                  if self.isLeftChild():
-                     self.parent.leftChild = self.leftChild
-                  else:
-                     self.parent.rightChild = self.leftChild
-                  self.leftChild.parent = self.parent
-           else:
-                  if self.isLeftChild():
-                     self.parent.leftChild = self.rightChild
-                  else:
-                     self.parent.rightChild = self.rightChild
-                  self.rightChild.parent = self.parent
-
-    def findSuccessor(self):
-      succ = None
-      if self.hasRightChild():
-          succ = self.rightChild.findMin()
-      else:
-          if self.parent:
-                 if self.isLeftChild():
-                     succ = self.parent
-                 else:
-                     self.parent.rightChild = None
-                     succ = self.parent.findSuccessor()
-                     self.parent.rightChild = self
-      return succ
-
-    def findMin(self):
-      current = self
-      while current.hasLeftChild():
-          current = current.leftChild
-      return current
-
-    def remove(self,currentNode):
-         if currentNode.isLeaf(): #leaf
-           if currentNode == currentNode.parent.leftChild:
-               currentNode.parent.leftChild = None
-           else:
-               currentNode.parent.rightChild = None
-         elif currentNode.hasBothChildren(): #interior
-           succ = currentNode.findSuccessor()
-           succ.spliceOut()
-           currentNode.key = succ.key
-           currentNode.payload = succ.payload
-
-         else: # this node has one child
-           if currentNode.hasLeftChild():
-             if currentNode.isLeftChild():
-                 currentNode.leftChild.parent = currentNode.parent
-                 currentNode.parent.leftChild = currentNode.leftChild
-             elif currentNode.isRightChild():
-                 currentNode.leftChild.parent = currentNode.parent
-                 currentNode.parent.rightChild = currentNode.leftChild
-             else:
-                 currentNode.replaceNodeData(currentNode.leftChild.key,
-                                    currentNode.leftChild.payload,
-                                    currentNode.leftChild.leftChild,
-                                    currentNode.leftChild.rightChild)
-           else:
-             if currentNode.isLeftChild():
-                 currentNode.rightChild.parent = currentNode.parent
-                 currentNode.parent.leftChild = currentNode.rightChild
-             elif currentNode.isRightChild():
-                 currentNode.rightChild.parent = currentNode.parent
-                 currentNode.parent.rightChild = currentNode.rightChild
-             else:
-                 currentNode.replaceNodeData(currentNode.rightChild.key,
-                                    currentNode.rightChild.payload,
-                                    currentNode.rightChild.leftChild,
-                                    currentNode.rightChild.rightChild)
+class BinaryST:
+    def __init__(self): #Arranca a Arvore com...
+        self.root = None # a RAIZ vazia
     
+    def insert(self, value): #Define o metodo insert
+        if self.root == None: #Se o NO estiver vazio
+            self.root = node(value) #Insere valor
+        else:
+            self._insert(value, self.root) #Caso nao insiramos o valor na raiz, 
+                                            #invocamos a função privada _insert devido ao efeito recursivo
+    def _insert(self, value, cur_node): #metodo privado para executar função recursiva
+        if value < cur_node.value:
+            if cur_node.ladEsq==None:
+                cur_node.ladEsq=node(value)
+            else:
+                self._insert(value, cur_node.ladEsq)
+        elif value > cur_node.value:
+            if cur_node.ladDrt==None:
+                cur_node.ladDrt=node(value)
+            else:
+                self._insert(value, cur_node.ladDrt)
+        else:
+            print ("Fim")
+    
+    def print_tree(self):
+        if self.root != None:
+            self._print_tree(self.root)
+    
+    def _print_tree(self, cur_node):
+        if cur_node !=None:
+            self._print_tree(cur_node.ladEsq)
+            print (str(cur_node.value))
+            self._print_tree(cur_node.ladDrt)
 #(6) DECLARAÇÃO DE FUNÇÕES:
 def cria_balcoes():
 #    Encher a lista balcoes gerando objetos da classe Balcao até atingir num_balcoes
@@ -348,15 +176,7 @@ def atende_passageiros():
 #função principal
 def simpar_simula():
     cria_balcoes()
-    
-def passTree():
-    i=0
-    for i in range(0, 69):
-        names.get_full_name()
-        print ("\n" ,names.get_full_name())
-        i = i + 1
-         
-            
+          
 #(7) CORPO PRINCIPAL DO PROGRAMA:
 if __name__ == '__main__':
     #print(ciclo_atual)
@@ -378,14 +198,14 @@ if __name__ == '__main__':
         for b in range(len(balcoes)):
             print("\n")
             print(balcoes[b])
+
+                 
     print("O balcão com fila mais curta: ", escolhe_filaMaisCurta())
-#    print(escolhe_filaMaisCurta())
-#atende_passageiros()
-#    print("A probabilidade de chegar mais um passageiro é " + str(chega_passageiro()) + "%")
-
-mytree = BinarySearchTree()
-mytree[17]= names.get_full_name()
-mytree[24]= names.get_full_name()
-
-print("\n" + mytree[17])
-print(mytree[24])
+print("\nOs lugares de passageiros encontram-se preenchidos. \n"\
+      "Eis a lista. \n")
+mytree = BinaryST()
+for i in range(0, 70):
+    #mytree[i]= names.get_full_name()
+    mytree.insert(names.get_full_name())
+    
+print (mytree.print_tree())
