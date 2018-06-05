@@ -19,7 +19,7 @@ import names
 num_pass = 70
 num_bag = 4
 num_balcoes = 4
-ciclos = 1
+ciclos = 10
 ciclo_atual = 0
 balcoes = []
 #(5) DECLARAÇÃO DE CLASSES:
@@ -56,14 +56,14 @@ class Balcao:
     "\n" + "tempt_esp: " + str(self.tempt_esp) + \
     "\n" + "bag_utemp: " + str(self.bag_utemp) + "\n"
 
-    def muda_inic_atend():
-        pass
-    def incr_passt_atend():
-        pass
+    def muda_inic_atend(self, tempAtend):
+        self.inic_atend = tempAtend
+    def incr_passt_atend(self):
+        self.passt_atend += 1
     def muda_numt_bag():
         pass
-    def muda_tempt_esp():
-        pass
+    def muda_tempt_esp(tempEspera):
+        self.tempt_esp += tempEspera
 #    função para devolver os passageiros da fila
     def obtem_pass_fila(self):
         return self.fila.items
@@ -304,8 +304,14 @@ class BinarySearchTree:
 #(6) DECLARAÇÃO DE FUNÇÕES:
 def cria_balcoes():
 #    Encher a lista balcoes gerando objetos da classe Balcao até atingir num_balcoes
-    while len(balcoes) < num_balcoes:
+    while len(balcoes) != num_balcoes:
         balcoes.append(Balcao(len(balcoes)+1, 0, 0, 0, 0, 0, 0))
+#    Encher filas dos balcoes gerando objetos da classe Passageiro até atingir num_pass        
+    total_pass = 0
+    while total_pass != num_pass:
+        total_pass += 1
+        randBalcao = random.randint(0, num_balcoes-1)
+        balcoes[randBalcao].fila.enqueue(Passageiro())
 # função para escolher a fila mais pequena
 def escolhe_filaMaisCurta():
 # extraio o size da fila de cada balcão e construo um dicionario (filas) com {balcão(b):tamanho da fila(t)}.
@@ -323,6 +329,11 @@ def gera_passageiro():
     return Passageiro()
 #    return Passageiro(random.randint(1,num_bag), copy.deepcopy(ciclo_atual))
 
+def mostra_balcoes():
+    for b in range(len(balcoes)):
+        print("\n")
+        print(balcoes[b])
+    print("O balcão com fila mais curta: ", escolhe_filaMaisCurta())
 # função para calcular a probabilidade de aparecer mais um passageiro mediante o ciclo_atual
 def chega_passageiro():
 #    divido ciclos por 3 para achar a terça parte do número total de ciclos
@@ -340,15 +351,29 @@ def chega_passageiro():
         return(60)
 # função para atender passageiros
 def atende_passageiros():
+    passageirosAtendidos = 0
     for b in balcoes:
         if b.fila.isEmpty() == False:
-            print(b.fila.dequeue())
-            chega_passageiro()
+            filaEspera = b.obtem_pass_fila()
+            passageiro = filaEspera[0]
+            print(passageiro)
+#            ut_bag = math.ceil(passageiro.bag_pass / b.bag_utemp)
+            
+            continue
+        else:
+            print('Balcão ' + str(b) + ' não tem passageiros na fila')
+            b.muda_inic_atend(ciclo_atual)
+            continue
+       
             
 #função principal
 def simpar_simula():
-    cria_balcoes()
-    
+    ciclo_atual = 0
+    while not ciclo_atual == ciclos:
+        print("««« CICLO n.º {} »»»" .format(ciclo_atual + 1))
+        ciclo_atual +=1
+        atende_passageiros()
+        
 def passTree():
     i=0
     for i in range(0, 69):
@@ -359,29 +384,9 @@ def passTree():
             
 #(7) CORPO PRINCIPAL DO PROGRAMA:
 if __name__ == '__main__':
-    #print(ciclo_atual)
-    #print(ciclos)    
-    while not ciclo_atual == ciclos:
-        print("««« CICLO n.º {} »»»" .format(ciclo_atual + 1))
-        ciclo_atual = ciclo_atual + 1
-        simpar_simula()
-            
-        balcoes[0].fila.enqueue(Passageiro())
-        balcoes[0].fila.enqueue(Passageiro())
-        balcoes[0].fila.enqueue(Passageiro())
-        balcoes[1].fila.enqueue(Passageiro())
-        balcoes[1].fila.enqueue(Passageiro())
-        balcoes[1].fila.enqueue(Passageiro())
-        balcoes[2].fila.enqueue(Passageiro())
-        balcoes[2].fila.enqueue(Passageiro())
-        balcoes[3].fila.enqueue(Passageiro())
-        for b in range(len(balcoes)):
-            print("\n")
-            print(balcoes[b])
-    print("O balcão com fila mais curta: ", escolhe_filaMaisCurta())
-#    print(escolhe_filaMaisCurta())
-#atende_passageiros()
-#    print("A probabilidade de chegar mais um passageiro é " + str(chega_passageiro()) + "%")
+    cria_balcoes()
+    mostra_balcoes()    
+    simpar_simula()
 
 mytree = BinarySearchTree()
 mytree[17]= names.get_full_name()
@@ -389,3 +394,4 @@ mytree[24]= names.get_full_name()
 
 print("\n" + mytree[17])
 print(mytree[24])
+
