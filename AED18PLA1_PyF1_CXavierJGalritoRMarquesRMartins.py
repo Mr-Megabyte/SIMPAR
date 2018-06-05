@@ -373,7 +373,7 @@ def simpar_simula():
         print("««« CICLO n.º {} »»»" .format(ciclo_atual + 1))
         ciclo_atual +=1
         atende_passageiros()
-    
+        
 def passTree():
     i=0
     for i in range(0, 69):
@@ -388,9 +388,10 @@ if __name__ == '__main__':
     mostra_balcoes()    
     simpar_simula()
 
-#mytree = BinarySearchTree()
-#mytree[17]= names.get_full_name()
-#mytree[24]= names.get_full_name()
-#
-#print("\n" + mytree[17])
-#print(mytree[24])
+mytree = BinarySearchTree()
+mytree[17]= names.get_full_name()
+mytree[24]= names.get_full_name()
+
+print("\n" + mytree[17])
+print(mytree[24])
+
